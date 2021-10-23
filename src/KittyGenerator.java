@@ -7,7 +7,7 @@ public class KittyGenerator {
     private String kittyXName ;
     private String kittyXDescription;
 
-
+    // hi
 
     public void run() throws IOException {
         System.out.println("Hello! Request information about one of our beloved kitties below. ");
@@ -75,15 +75,3 @@ public class KittyGenerator {
      }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
