@@ -8,6 +8,7 @@ public class KittyGenerator {
     private String kittyXDescription;
 
     // hi
+    //hello
 
     public void run() throws IOException {
         System.out.println("Hello! Request information about one of our beloved kitties below. ");
