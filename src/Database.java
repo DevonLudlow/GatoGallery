@@ -28,12 +28,6 @@ public class Database {
                 .withArrayIndenter(new DefaultIndenter("  ", "\n"));
     }
 
-    public void run() throws IOException {
-        System.out.println(Arrays.toString(listKittyNames().toArray()));
-        saveKitty("luke", "luke test");
-        System.out.println(getKittyDescription("luke"));
-    }
-
     /**
      * get names (just names no descriptions) of all kitties currently in the database
      */

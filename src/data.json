@@ -1,8 +1,44 @@
 {
   "cats" : [
     {
-      "name": "example",
-      "description": "example description"
+      "name" : "pepper",
+      "description" : "Pepper is old and shaped like a barrel."
+    },
+    {
+      "name" : "lemon",
+      "description" : "Lemon is old, orange and grumpy.  She likes Charlotte, but not really anyone else."
+    },
+    {
+      "name" : "goku",
+      "description" : "Honestly our database doesn't have much info on Goku...only that he is black andterrified of literally everything.  And he's got a cool name."
+    },
+    {
+      "name" : "wasabi",
+      "description" : "Wasabi is an adorable black kitty who loves playing with trash and definitely sees demons at night."
+    },
+    {
+      "name" : "bernard",
+      "description" : "*made up kitty to test functionality*"
+    },
+    {
+      "name" : "poppy",
+      "description" : "Poppy is a fluffy (slightly overweight but we don't talk about it) white kitty who has funny eyes and loooovves hard pets."
+    },
+    {
+      "name" : "clover",
+      "description" : "Clovey Baloney is an orange tabby-cat who screams constantly and loves human food."
+    },
+    {
+      "name" : "terry",
+      "description" : "Terry is fun"
+    },
+    {
+      "name" : "ivy",
+      "description" : "Ivy is a racoon-lookin-ass scaredy cat who bites elbows and hides under the bed for 3-5 business hours if she hears any noise above 10 decibels."
+    },
+    {
+      "name" : "gura",
+      "description" : "Gura is a fatass white cat who will stop at nothing to obtain her next meal...even if it's you."
     }
   ]
 }
