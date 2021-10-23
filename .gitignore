@@ -1,3 +1,5 @@
 .DS_STORE
-.idea
 gato.iml
+.idea
+out
+lib

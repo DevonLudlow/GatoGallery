@@ -1,0 +1,8 @@
+{
+  "cats" : [
+    {
+      "name": "example",
+      "description": "example description"
+    }
+  ]
+}
