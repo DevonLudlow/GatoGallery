@@ -15,15 +15,50 @@ public class KittyGenerator {
     // hi
     //hello
 
-    public void run() throws IOException {
-        System.out.println("Hello! Request information about one of our beloved kitties below. ");
-        while (true) {
-            System.out.print("Search for kimmtty here: ");
-            String userInput = readInput();
-            userInput = userInput.toLowerCase();
-            printCatBio(userInput);
+    public void removeKitty(String userInput) throws IOException {
+        System.out.println("Would you like to remove a kitty from our database? " + "(yes/no) ");
+        String yesNo = readInput();
+        if (yesNo.equals("yes")) {
+            System.out.println("Enter the kitty's name that you would like to remove: ");
+            kittyXName = readInput();
+            System.out.print("Are you sure you'd like to remove " + kittyXName + " from out database?:(" +
+                    " (yes/no): ");
+            String yesNoRmv = readInput();
+            if (yesNoRmv.equals("no")) {
+                run();
+              }else if (yesNoRmv.equals("yes")){
+                System.out.println("We're sorry to see you go " + kittyXName + ", we wish upon you many yarnballs " +
+                        "and leaves of catnip");
+                dataBase.removeKitty(kittyXName);
 
+            }
+                     } else {
+            run();
         }
+
+                }
+    public void run() throws IOException {
+
+        while (true) {
+            System.out.print("Hello! Would you like to search for a kitty? " + " (yes/no): " + " ");
+            String yesNo = readInput();
+            if(yesNo.equals("yes")) {
+                System.out.print("Search for kimmtty here: ");
+                String userInput = readInput();
+                userInput = userInput.toLowerCase();
+                printCatBio(userInput);
+            }else if (yesNo.equals("no")) {
+                System.out.println("what would you like to do? ");
+                String rmvRqst = readInput();
+                if (rmvRqst.equals("remove kitty")) {
+                    removeKitty(kittyXName);
+                }else {
+                    run();
+                }
+            }
+        }
+
+
     }
 
     public String readInput() throws IOException {
@@ -33,14 +68,6 @@ public class KittyGenerator {
     }
 
 
-    String wasabi;
-    String gura;
-    String ivy;
-    String goku;
-    String poppy;
-    String clover;
-    String pepper;
-    String lemon;
 
     public void printCatBio(String userInput) throws IOException {
         ArrayList<String> kittyNames = dataBase.listKittyNames();
@@ -53,9 +80,6 @@ public class KittyGenerator {
             }
         }
         addNewKitty();
-
-
-
 
 
         }
@@ -78,6 +102,7 @@ public class KittyGenerator {
 
         }
     }
+
 
 
 }
