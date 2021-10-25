@@ -40,9 +40,15 @@ public class KittyGenerator {
     public void run() throws IOException {
 
         while (true) {
-            System.out.print("Hello! Would you like to search for a kitty? " + " (yes/no): " + " ");
-            String yesNo = readInput();
-            if(yesNo.equals("yes")) {
+            String firstPrompt = "Hello! Welcome to Gato Gallery, an international library of kittens!\n" +
+                    "Please choose from the list of functions below:\n" +
+                    "                                           add new kitty\n" +
+                    "                                           search existing kitty\n" +
+                    "                                           remove kitty\n";
+            System.out.println(firstPrompt);
+            String chooseFunction = readInput();
+            if(chooseFunction.equals("add new kitty")) {
+                System.out.print("Enter your kimmtty's name here: ");
                 System.out.print("Search for kimmtty here: ");
                 String userInput = readInput();
                 userInput = userInput.toLowerCase();
@@ -79,12 +85,11 @@ public class KittyGenerator {
                 return;
             }
         }
-        addNewKitty();
 
 
         }
 
-    public void addNewKitty() throws IOException {
+    public void kittyNotFound() throws IOException {
         System.out.print("Kimmty not found in our database! Would you like to add your kimmty to our database?" +
                 "(yes/no) ");
         String yesNo = readInput();
