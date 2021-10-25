@@ -8,10 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -29,7 +26,7 @@ public class Database {
     }
 
     /**
-     * get names (just names no descriptions) of all kitties currently in the database
+     * get names of all kitties currently in the database
      */
     public ArrayList<String> listKittyNames() throws IOException {
         ArrayList<String> names = new ArrayList<>();
@@ -72,6 +69,17 @@ public class Database {
     }
 
     /**
+     * remove a kitty from the database.
+     * just provide the kitty's name.
+     * if the kitty does not exist, then nothing will happen.
+     */
+    public void removeKitty(String name) throws IOException {
+        ArrayList<CatData> cats = readKitties();
+        cats.removeIf(x -> x.getName().equals(name));
+        saveKitties(cats);
+    }
+
+    /**
      * reads list of cats from data.json. returns as easily usable ArrayList
      */
     private ArrayList<CatData> readKitties() throws IOException {
@@ -85,8 +93,12 @@ public class Database {
      * saves list of cats to data.json file
      */
     private void saveKitties(ArrayList<CatData> cats) throws IOException {
+        // sort cats alphabetically by name
+        ArrayList<CatData> sortedCats = (ArrayList<CatData>) cats.stream()
+                .sorted((x1, x2) ->  x1.getName().compareTo(x2.getName()))
+                .collect(Collectors.toList());
         Map<String, ArrayList<CatData>> jsonData = new HashMap<>();
-        jsonData.put("cats", cats);
+        jsonData.put("cats", sortedCats);
         File file = new File("src/data.json");
         objectMapper.writer(printer).writeValue(file, jsonData);
     }
