@@ -108,6 +108,17 @@ public class KittyGenerator {
         }
     }
 
+    public String PurpleText(String text) {
+        return "\u001B[35m" + text + "\u001B[0m";
+    }
+
+    public String GreenText(String text) {
+        return "\u001B[32m" + text + "\u001B[0m";
+    }
+
+    public String YellowText(String text) {
+        return "\u001B[33m" + text + "\u001B[0m";
+    }
 
 
 }
