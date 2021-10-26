@@ -1,40 +1,54 @@
 {
   "cats" : [
     {
+      "name" : "Terry",
+      "description" : "scary terry",
+      "pronouns" : "he/him"
+    },
+    {
       "name" : "bernard",
-      "description" : "*made up kitty to test functionality*"
+      "description" : "*made up kitty to test functionality*",
+      "pronouns" : null
     },
     {
       "name" : "clover",
-      "description" : "Clovey Baloney is an orange tabby-cat who screams constantly and loves human food."
+      "description" : "Clovey Baloney is an orange tabby-cat who screams constantly and loves human food.",
+      "pronouns" : null
     },
     {
       "name" : "goku",
-      "description" : "Honestly our database doesn't have much info on Goku...only that he is black and terrified of literally everything. And he's got a cool name."
+      "description" : "Honestly our database doesn't have much info on Goku...only that he is black and terrified of literally everything. And he's got a cool name.",
+      "pronouns" : null
     },
     {
       "name" : "gura",
-      "description" : "Gura is a fatass white cat who will stop at nothing to obtain her next meal...even if it's you."
+      "description" : "Gura is a fatass white cat who will stop at nothing to obtain her next meal...even if it's you.",
+      "pronouns" : null
     },
     {
       "name" : "ivy",
-      "description" : "Ivy is a racoon-lookin-ass scaredy cat who bites elbows and hides under the bed for 3-5 business hours if she hears any noise above 10 decibels."
+      "description" : "Ivy is a racoon-lookin-ass scaredy cat who bites elbows and hides under the bed for 3-5 business hours if she hears any noise above 10 decibels.",
+      "pronouns" : null
     },
     {
       "name" : "lemon",
-      "description" : "Lemon is old, orange and grumpy. She likes Charlotte, but not really anyone else."
+      "description" : "Lemon is old, orange and grumpy. She likes Charlotte, but not really anyone else.",
+      "pronouns" : null
     },
     {
       "name" : "poppy",
-      "description" : "Poppy is a fluffy (slightly overweight but we don't talk about it) white kitty who has funny eyes and loooovves hard pets."
+      "description" : "Poppy is a fluffy (slightly overweight but we don't talk about it) white kitty who has funny eyes and loooovves hard pets.",
+      "pronouns" : null
     },
     {
       "name" : "terry",
-      "description" : "scary terry"
+      "description" : "terry not scary",
+      "pronouns" : "he/him"
     },
     {
       "name" : "wasabi",
-      "description" : "Wasabi is an adorable black kitty who loves playing with trash and definitely sees demons at night."
+      "description" : "Wasabi is an adorable black kitty who loves playing with trash and definitely sees demons at night.",
+      "pronouns" : null
     }
   ]
 }

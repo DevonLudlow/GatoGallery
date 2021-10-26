@@ -55,13 +55,13 @@ public class Database {
      * save new kitty to database.
      * if a kitty with this name already exists, its description will be overwritten.
      */
-    public void saveKitty(String name, String description) throws IOException {
+    public void saveKitty(String name, String description, String pronouns) throws IOException {
         ArrayList<CatData> cats = readKitties();
         // convert to map to remove duplicates
         Map<String, CatData> catMap = cats.stream()
                 .collect(Collectors.toMap(CatData::getName, Function.identity()));
         // create and add new kitty
-        CatData newKitty = new CatData(name, description);
+        CatData newKitty = new CatData(name, description, pronouns);
         catMap.put(name, newKitty);
         // change map back to basic array list
         ArrayList<CatData> updatedCats = new ArrayList<>(catMap.values());

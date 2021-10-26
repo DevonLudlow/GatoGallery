@@ -6,11 +6,15 @@ import java.util.ArrayList;
 public class CatData {
     private String name;
     private String description;
+    private String pronouns;
 
     @JsonCreator
-    public CatData(@JsonProperty("name") String name, @JsonProperty("description") String description) {
+    public CatData(@JsonProperty("name") String name,
+                   @JsonProperty("description") String description,
+                   @JsonProperty("pronouns")String pronouns) {
         this.name = name;
         this.description = description;
+        this.pronouns = pronouns;
     }
 
     public String getName() {
@@ -27,5 +31,13 @@ public class CatData {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getPronouns() {
+        return pronouns;
+    }
+
+    public void setPronouns(String pronouns) {
+        this.pronouns = pronouns;
     }
 }
