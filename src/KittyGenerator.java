@@ -11,6 +11,7 @@ public class KittyGenerator {
     private String kittyXPronouns;
 
 
+
     public KittyGenerator() {
         dataBase = new Database();
     }
@@ -20,23 +21,23 @@ public class KittyGenerator {
         for (String kittyName: kittyNames){
             if (kittyName.equals(userInput)){
                 String kittyDescription = dataBase.getKittyDescription(kittyName);
+                String kittyPronouns = dataBase.getKittyPronouns(kittyName);
                 System.out.println( "bio: " + kittyDescription);
-                System.out.println( "pronouns: " + kittyXPronouns + "\n");
+                if (kittyPronouns != null) {
+                    System.out.println("pronouns: " + kittyPronouns + "\n");
+                }
                 return;
             }
         }
         kittyNotFound();
     }
 
-    /*private void catchDuplicate(String userInput) throws IOException {
-        ArrayList<String> kittyNames = dataBase.listKittyNames();
-
-    }
-          */
-
     private void addKitty() throws IOException {
         System.out.print("Amazing! Enter your cat's name here: ");
         kittyXName = readInput();
+        if (readInput().equals("back")){
+            run();
+        }
         kittyXName = kittyXName.toLowerCase();
         System.out.println("What are your kitty's pronouns? ");
         kittyXPronouns = readInput();
@@ -81,13 +82,36 @@ public class KittyGenerator {
         anythingElse();
     }
 
+    // function called in browseKitties to loop list of kitties
+    private void kittyListBrowse()  throws IOException {
+        ArrayList<String> kittyNames = dataBase.listKittyNames();
+        for (String browseKitties : kittyNames) {
+            System.out.println(browseKitties);
+        }
+        System.out.println("Type in a kitty's name that you would like to view");
+        String userInput = readInput();
+        userInput = userInput.toLowerCase();
+        printCatBio(userInput);
+    }
+
+    // browse list of kitties and print chosen cat's bio
     private void browseKitties() throws IOException {
         System.out.println("Here is a list of all the adorable cats we have so far: ");
         ArrayList<String> kittyNames = dataBase.listKittyNames();
         for (String browseKitties : kittyNames ) {
             System.out.println(browseKitties);
         }
-        anythingElse();
+            kittyListBrowse();
+        System.out.println("Would you like to continue browsing kitties? (yes/no): ");
+        String yesNo = readInput();
+        if (yesNo.equals("no")) {
+            anythingElse();
+        } else if (yesNo.equals("yes")) {
+            for (String browseKitties : kittyNames) {
+                System.out.println(browseKitties);
+            }
+            kittyListBrowse();
+        }
     }
 
     private void updateKitty() throws IOException {
@@ -119,6 +143,7 @@ public class KittyGenerator {
                 System.out.println("Okay, we'll leave " + kittyXName + "'s bio alone :) ");
                 anythingElse();
             }else if (yesNoChange.equals("yes")) {
+                kittyXPronouns = dataBase.getKittyPronouns(kittyXName);
                 System.out.println("Hooray! " + kittyXName + "'s bio has been updated!");
                 dataBase.saveKitty(kittyXName, kittyXDescription, kittyXPronouns);
                 anythingElse();
@@ -133,44 +158,49 @@ public class KittyGenerator {
                 System.out.println("Okay, " + kittyXName + "'s pronouns won't change. ");
                 anythingElse();
             }else if (yesNoProChange.equals("yes")) {
+               kittyXName = dataBase.getKittyDescription(kittyXName);
                 dataBase.saveKitty(kittyXName, kittyXDescription, kittyXPronouns);
-                System.out.println("OMG!" + kittyXName + "'s pronouns were changed to: " + kittyXPronouns);
+                System.out.println("OMG! " + kittyXName + "'s pronouns were changed to: " + kittyXPronouns);
                 anythingElse();
             }
 
         }
 
         }
-
-
+        
     private void anythingElse() throws IOException {
         System.out.println("Would you like to do anything else? (yes/no): ");
         String yesNo = readInput();
         String nextPrompt = "What would you like to do?\n" +
                 "Please choose from the list of functions below:\n" +
-                PurpleText("                                           add kitty (a)\n") +
+                PurpleText("                                           browse gallery (b)\n" +
                 YellowText("                                           search kitty (s)\n") +
                 GreenText("                                            remove kitty (r)\n") +
                           "                                            update kitty (u)\n" +
-                          "                                            browse kitties (b)\n";
+                          "                                            add kitty (a) \n");
         if (yesNo.equals("no")) {
+            System.out.println("We'll miss you!  Have a purrfect day! \n\n\n");
             run();
         }else if (yesNo.equals("yes")){
             System.out.println(nextPrompt);
         }String chooseFunction = readInput();
         chooseFunction = chooseFunction.toLowerCase();
-        if(chooseFunction.equals("a")) {
+        if(chooseFunction.equals("a")||chooseFunction.equals("add kitty") || chooseFunction.equals("add")) {
             addKitty();
-        }else if (chooseFunction.equals("s")) {
+        }else if (chooseFunction.equals("s") || chooseFunction.equals("search kitty") ||
+                chooseFunction.equals("search")) {
             searchKitty();
             String userInput = readInput();
             userInput = userInput.toLowerCase();
             printCatBio(userInput);
-        }else if (chooseFunction.equals("r")) {
+        }else if (chooseFunction.equals("r") || chooseFunction.equals("remove kitty") ||
+                chooseFunction.equals("remove")) {
             removeKitty();
-        }else if (chooseFunction.equals("b")) {
+        }else if (chooseFunction.equals("b") || chooseFunction.equals("browse gallery") ||
+                chooseFunction.equals("browse")) {
             browseKitties();
-        } else if (chooseFunction.equals("u")){
+        } else if (chooseFunction.equals("u") || chooseFunction.equals("update kitty") ||
+                chooseFunction.equals("update")){
             updateKitty();
         } else {
             run();
@@ -182,26 +212,30 @@ public class KittyGenerator {
         while (true) {
             String firstPrompt = "Hello! Welcome to Gato Gallery, an international library of kittens!\n" +
                     "Please choose from the list of functions below:\n" +
-                    PurpleText("                                           add kitty (a)\n") +
+                    PurpleText("                                           browse gallery (b)\n") +
                     YellowText("                                           search kitty (s)\n") +
                     GreenText("                                            remove kitty (r)\n") +
                               "                                            update kitty (u)\n" +
-                              "                                            browse kitties (b)\n";
+                              "                                            add kitty (a)\n";
             System.out.println(firstPrompt);
             String chooseFunction = readInput();
             chooseFunction = chooseFunction.toLowerCase();
-            if(chooseFunction.equals("a")) {
+            if(chooseFunction.equals("a") || chooseFunction.equals("add kitty") || chooseFunction.equals("add")) {
                 addKitty();
-            }else if (chooseFunction.equals("s")) {
+            }else if (chooseFunction.equals("s") || chooseFunction.equals("search kitty") ||
+                    chooseFunction.equals("search")) {
                 searchKitty();
                 String userInput = readInput();
                 userInput = userInput.toLowerCase();
                 printCatBio(userInput);
-            }else if (chooseFunction.equals("u")) {
+            }else if (chooseFunction.equals("u") || chooseFunction.equals("update kitty") ||
+                    chooseFunction.equals("update")) {
                 updateKitty();
-            }else if (chooseFunction.equals("b")){
+            }else if (chooseFunction.equals("b") || chooseFunction.equals("browse gallery") ||
+                    chooseFunction.equals("browse")){
                 browseKitties();
-            } else if (chooseFunction.equals("r")) {
+            } else if (chooseFunction.equals("r") || chooseFunction.equals("remove kitty") ||
+                    chooseFunction.equals("remove")) {
                 removeKitty();
             }else {
                 run();

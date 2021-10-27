@@ -52,6 +52,20 @@ public class Database {
     }
 
     /**
+     * get pronouns for kitty. if kitty does not exist in database, returns empty string ""
+     */
+    public String getKittyPronouns(String kittyName) throws IOException {
+        ArrayList<CatData> cats = readKitties();
+        for (CatData cat : cats) {
+            if (cat.getName().equals(kittyName)) {
+                return cat.getPronouns();
+            }
+        }
+        // kitty was not found
+        return "";
+    }
+
+    /**
      * save new kitty to database.
      * if a kitty with this name already exists, its description will be overwritten.
      */

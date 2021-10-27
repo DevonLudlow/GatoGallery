@@ -36,6 +36,11 @@
       "pronouns" : null
     },
     {
+      "name" : "pepper",
+      "description" : null,
+      "pronouns" : "she/her"
+    },
+    {
       "name" : "poppy",
       "description" : "Poppy is a fluffy (slightly overweight but we don't talk about it) white kitty who has funny eyes and loooovves hard pets.",
       "pronouns" : null
